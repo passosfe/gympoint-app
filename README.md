@@ -2,9 +2,9 @@
   <img alt="Gympoint" title="Gympoint" src="./mobile/src/assets/logo@3x.png" width="200px" />
 </h1>
 
-<h3 align="center">
-  Bootcamp application
-</h3>
+<h2 align="center">
+  Gympoint
+</h2>
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/passosfe/gympoint-app?color=%2304D361">
