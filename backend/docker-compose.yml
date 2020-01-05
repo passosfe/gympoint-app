@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:11
+    container_name: gympoint-postgres-container
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+
+  redis:
+    image: redis:alpine
+    container_name: gympoint-redis-container
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis:/data
+
+volumes:
+  postgres:
+  redis:
