@@ -85,7 +85,7 @@ If you have any question about the project, just contact me or open a issue.
 - [@rocketseat/unform](https://github.com/Rocketseat/unform) - ReactJS form library to create uncontrolled form structures with nested fields, validations and much more!
 - [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
 - [date-fns](https://date-fns.org/) - Modern JavaScript date utility library
-- [history](https://github.com/ReactTraining/history) - https://github.com/ReactTraining/history
+- [history](https://github.com/ReactTraining/history) - Manage session history with JavaScript
 - [immer](https://github.com/immerjs/immer) - Create the next immutable state by mutating the current one
 - [polished](https://polished.js.org/) - A lightweight toolset for writing styles in JavaScript
 - [prop-types](https://github.com/facebook/prop-types) - Runtime type checking for React props and similar objects
