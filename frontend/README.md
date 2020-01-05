@@ -81,26 +81,28 @@ If you have any question about the project, just contact me or open a issue.
 
 # Built With
 
-- [ReactJS](https://nodejs.org/en/) - Server
-- [@rocketseat/unform](https://www.npmjs.com/package/bcryptjs) - Hash generator
-- [axios](https://sequelize.org/) - ORM for Postgres
-- [date-fns](https://github.com/jquense/yup) - Object schema validator
-- [history](https://expressjs.com/) - Router
-- [immer](https://github.com/alangpierce/sucrase) - Transpiling
-- [polished](https://nodemon.io/) - Process Manager used in the development
-- [prop-types](https://github.com/motdotla/dotenv) - Environment loader
-- [react-confirm-alert](https://eslint.org/) - JS Linter and code style
-- [react-datepicker](https://github.com/prettier/prettier) - Code formatter
-- [react-icons](https://bee-queue.com/) - Redis-backed job queue for Node.js
-- [react-number-format](https://date-fns.org/) - Date utility
-- [react-select](https://www.npmjs.com/package/express-handlebars) - Handlebars view engine for Express
-- [react-toastify](https://github.com/auth0/node-jsonwebtoken) - JSON Web Tokens
-- [reactotron-react-js](https://nodemailer.com/about/) - Email sending
-- [redux](https://github.com/yads/nodemailer-express-handlebars) - Plugin for Nodemailer
-- [redux-persist](https://github.com/brianc/node-postgres) - PostgreSQL client for Node.js
-- [redux-saga](https://github.com/scarney81/pg-hstore) - Serializing and deserializing JSON data to hstore format
-- [styled-components](https://github.com/getsentry/sentry-javascript/tree/master/packages/node) - Application monitoring platform that helps you identify issues in real-time.
-- [yup](https://github.com/getsentry/sentry-javascript/tree/master/packages/node) - Application monitoring platform that helps you identify issues in real-time.
+- [ReactJS](https://reactjs.org) - A declarative, efficient, and flexible JavaScript library for building user interfaces.
+- [@rocketseat/unform](https://github.com/Rocketseat/unform) - ReactJS form library to create uncontrolled form structures with nested fields, validations and much more!
+- [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
+- [date-fns](https://date-fns.org/) - Modern JavaScript date utility library
+- [history](https://github.com/ReactTraining/history) - https://github.com/ReactTraining/history
+- [immer](https://github.com/immerjs/immer) - Create the next immutable state by mutating the current one
+- [polished](https://polished.js.org/) - A lightweight toolset for writing styles in JavaScript
+- [prop-types](https://github.com/facebook/prop-types) - Runtime type checking for React props and similar objects
+- [react-confirm-alert](https://github.com/GA-MO/react-confirm-alert) - react component confirm dialog.
+- [react-datepicker](https://reactdatepicker.com/) - A simple and reusable datepicker component for React.
+- [react-icons](https://react-icons.netlify.com/#/) - Popular icons in your React projects easly
+- [react-number-format](hhttps://github.com/s-yadav/react-number-format) - React component to format numbers in an input or as a text.
+- [react-select](https://react-select.com/home) - A flexible and beautiful Select Input control for ReactJS
+- [react-toastify](https://github.com/fkhadra/react-toastify) - React notification made easy 🚀 !
+- [reactotron-react-js](https://github.com/infinitered/reactotron) - A desktop app for inspecting your React JS and React Native projects. macOS, Linux, and Windows.
+- [redux](https://redux.js.org/) - A Predictable State Container for JS Apps
+- [redux-persist](https://github.com/rt2zz/redux-persist) - persist and rehydrate a redux store
+- [redux-saga](https://github.com/redux-saga/redux-saga) - An alternative side effect model for Redux apps
+- [styled-components](https://www.styled-components.com/) - Use the best bits of ES6 and CSS to style your apps without stress
+- [yup](https://github.com/jquense/yup) - Dead simple Object schema validation
+- [eslint](https://eslint.org/) - JS Linter and code style
+- [prettier](https://github.com/prettier/prettier) - Code formatter
 
 # License
 
