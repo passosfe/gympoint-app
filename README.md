@@ -26,7 +26,7 @@ All the system was made with JavaScript using NodeJs to the server side, ReactJs
 
 All knowledge aquired from the GoStack Bootcamp was used to complete this project.
 
-### About Me
+# About Me
 
 Email: passos.fe@gmail.com
 
