@@ -1,39 +1,39 @@
-# GYMPOINT - Backend
+<h1 align="center">
+  <img alt="Gympoint" title="Gympoint" src="./mobile/src/assets/logo@3x.png" width="200px" />
+</h1>
 
-Gympoint is a Gym manager app. With it you can manage the accounts and information of both users and students.
+<h3 align="center">
+  Gympoint
+</h3>
 
-## About This Project
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/passosfe/gympoint-app?color=%2304D361">
 
-The application backend is being developed in Node.js and uses `express` as the web framework,`sequelize` for communication with PostgreSQL database and `jsonwebtoken` for user authentication.
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
+
+  <a href="https://github.com/passosfe/gympoint-app/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/passosfe/gympoint-app?style=social">
+  </a>
+  </a>
+</p>
+
+# About This Project
+
+The application backend is developed in Node.js and uses `express` as the web framework,`sequelize` for communication with PostgreSQL database and `jsonwebtoken` for user authentication.
 
 Also `bee-queue` is used as a job queue using `Redis` to send emails using `node-mailer`, `handlebars` to configure each email and `Mailtrap` for testing purposes, triggered by certain events wich will be described here.
 
 Feel free to clone this project for anything you want.
 
-### About Me
+# About Me
 
 Email: passos.fe@gmail.com
 
 Connect at [LinkedIn](https://www.linkedin.com/in/passosfe/)
 
-## Table of Contents
+# Getting Started
 
-1. [Getting Started](#Getting-Started)
-2. [Routes](#Routes)
-
-- [POST](#POST)
-  - [1. Session Start](#1-Session-Start)
-  - [2. Student Creation](#2-Student-Creation)
-- [PUT](#PUT)
-  - [3. Update Student](#1-Update-Student)
-  - [4. Update User](#2-Update-User)
-
-3. [TODO](#TODO)
-4. [License](#License)
-
-## Getting Started
-
-### Prerequisites
+## Prerequisites
 
 In order to run this project you must have the following in your computer:
 
@@ -42,14 +42,14 @@ In order to run this project you must have the following in your computer:
 - Redis (Running on default port 6379)
 - Mailtrap account
 
-### Installing
+## Installing
 
 **Cloning the Repository**
 
 ```
-$ git clone https://github.com/passosfe/gympass-backend
+$ git clone https://github.com/passosfe/gympoint-app
 
-$ cd gympass-backend
+$ cd gympass-app
 ```
 
 **Installing dependencies**
@@ -64,188 +64,71 @@ _or_
 $ npm install
 ```
 
-## Routes
+**Docker Containers**
 
-Base URL: http://localhost:3334/
+- [Docker Compose](https://docs.docker.com/compose/) or another setted Postgres service
 
-### Sessions
+First, you need to create a **.env** file in root of application. The structure of this file is similar to the **.env.example** file, just copy and put the correct informations for all variables.
 
-- **This route is where you can get the token wich is required to access other endpoints in the API.**
+### Setting database with docker compose
 
-All ** CREATION ** and ** MODIFICATION ** requests must be authenticated with a token that is provided after login. To request, a `POST` request must be sent to the address:`http://localhost:3334/sessions`. In the request's body, the following information is expected in JSON format:
+#### Starting postgres service with docker compose
 
-```json
-{
-  "email": "user@email.com",
-  "password": "userpassword"
-}
+If you dont have postgres service installed localy, you can install it with **docker compose**:
+
+```
+  ~ docker-compose up -d
 ```
 
-** PLEASE NOTE: ** All fields in this request are required.
+The postgres container will be created with a user and password setted in **.env** file.
 
-If login is accepted, the response will be as follows:
+If you try create postgres service with docker compose with a local postgres service running, you will receive a error because the service is already running in the local port 5432.
 
-```json
-{
-  "user": {
-    "id": 7,
-    "name": "Username",
-    "email": "user@email.com"
-  },
-  "token": "token"
-}
+You can stop postgres service in Mac with the command:
+
+```
+  ~ sudo -u postgres ./pg_ctl -D /your/data/directory/path stop
 ```
 
-The generated token will be requested for all the following `POST` and`PUT` requests.
+#### Creating and configurating database
 
-#### 2. Criação de Alunos
-
-Para criar um `aluno` no banco de dados, deve ser enviada uma requisição do tipo `POST` para o endereço `http://localhost:3334/students`. A requisição deve enviar dentro do bearer token, o token gerado no início de sessão. Dentro do corpo da requisição, são esperados os seguintes parâmetros:
-
-```json
-{
-  "name": "Name",
-  "email": "student@email.com",
-  "age": 20,
-  "weight": 50.5,
-  "height": 150
-}
+```
+  ~ yarn sequelize db:create
+  ~ yarn sequelize db:migrate
+  ~ yarn sequelize db:seed:all
 ```
 
-**ATENÇÃO:** Todos os campos desta requisição são obrigatórios.
+## Running application
 
-Caso a requsição seja aceita, a resposta conterá os seguintes dados:
+In development mode:
 
-```json
-{
-  "id": 4,
-  "name": "Name",
-  "email": "student@email.com",
-  "age": 20,
-  "weight": 50.5,
-  "height": 150
-}
+```
+  ~ yarn dev
+
+  ~ yarn queue:dev
 ```
 
-Caso ocorra algum erro com a requisição, verifique na sessão de erros em [erros na criação de alunos](#Criação-de-Alunos).
+In production mode:
 
-### PUT
+```
+  ~ yarn build
+  ~ yarn start
 
-#### 1. Update de Alunos
-
-Para atualizar um `aluno` no banco de dados, deve ser enviada uma requisição do tipo `PUT` para o endereço `http://localhost:3334/students`. A requisição deve enviar dentro do bearer token, o token gerado no início de sessão. Dentro do corpo da requisição, são esperados os seguintes parâmetros:
-
-```json
-{
-  "name": "Name",
-  "email": "student@email.com",
-  "new_email": "student@newemail.com",
-  "age": 21,
-  "weight": 51,
-  "height": 152
-}
+  ~ yarn queue
 ```
 
-**ATENÇÃO:** Apenas o campo de e-mail é obrigatório, para que o aluno seja encontrado no banco de dados. Além deste campo basta enviar os campos que serão atualizados.
+# 📗 Documentation
 
-Caso a requsição seja aceita, a resposta conterá os seguintes dados:
+There is a file called `insomnia.json` in the root of application, that is the exported documentation of [insomnia](https://insomnia.rest/).
 
-```json
-{
-  "id": 4,
-  "name": "Name",
-  "email": "student@newemail.com",
-  "age": 21,
-  "weight": 51,
-  "height": 152
-}
-```
+Insomnia is a software where you can test the requests of your server side application.
 
-Caso ocorra algum erro com a requisição, verifique na sessão de [erros na atualização de alunos](#Update-de-Alunos).
+# 🕶️ Contributing
 
-#### 2. Update de Usuários
+This is a open project and is able to receive contributing for all people.
+If you have any question about the project, just contact me or open a issue.
 
-Para atualizar um `usuário` no banco de dados, deve ser enviada uma requisição do tipo `PUT` para o endereço `http://localhost:3334/users`. A requisição deve enviar dentro do bearer token, o token gerado no início de sessão. O token providenciado irá identificar o usuário que será modificado. Dentro do corpo da requisição, são esperados os seguintes parâmetros:
-
-```json
-{
-  "name": "Username",
-  "email": "user@newemail.com",
-  "oldPassword": "123456",
-  "password": "1234567",
-  "confirmPassword": "1234567"
-}
-```
-
-**ATENÇÃO:** Nenhum campo é obrigatório. O e-mail só será necessário caso o usuário deseje atualizar seu e-mail cadastrado, não sendo necessário enviar o e-mail antigo. Caso deseje modificar a senha, o campo `"oldPassword"` é obrigatório e deve conter a senha atualmente utilizada pelo usuário, o campo`"password"` será a nova senha do usuário e a nova senha deve conter no mínimo **6 dígitos** e o campo `"confirmPassword"` deve conter a mesma senha inserida no campo `"password"` para confirmação da senha.
-
-Caso a requsição seja aceita, a resposta conterá os seguintes dados:
-
-```json
-{
-  "id": 7,
-  "name": "Username",
-  "user_email": "user@email.com"
-}
-```
-
-Caso ocorra algum erro com a requisição, verifique na sessão de [erros na atualização de usuários](#Update-de-Usuários).
-
-## Models
-
-## Possíveis Erros
-
-#### Início de Sessão
-
-- `"Validation failed"`
-
-Este erro ocorre quando o corpo da requisição contém algum erro, verifique se todos os campos nessessários estão presentes e se estão preenchidos corretamente.
-
-- `"User does not exist"`
-
-Este erro ocorre quando o email de usuário no corpo da requisição não pode ser encotrado no banco de usuários cadastrados. Verifique se o email está correto e tente novamente.
-
-- `"Wrong Password"`
-
-Este erro ocorre quando a senha enviada no corpo da requisição não corresponde à senha cadastrada ao usuário. Verifique se a senha está correta e tente novamente.
-
-#### Criação de Alunos
-
-- `"Validation failed"`
-
-Este erro ocorre quando o corpo da requisição contém algum erro, verifique se todos os campos nessessários estão presentes e se estão preenchidos corretamente.
-
-- `"Student already exists"`
-
-Este erro ocorre quando o e-mail que está sendo enviado para inserção já se encontra no banco de dados dos alunos. Possivelmente o `aluno` já existe ou outro `aluno` já está cadastrado usando este e-mail. Verifique o e-mail e tente novamente.
-
-#### Update de Alunos
-
-- `"Validation failed"`
-
-Este erro ocorre quando o corpo da requisição contém algum erro, verifique se todos os campos nessessários estão presentes e se estão preenchidos corretamente.
-
-- `User email not found`
-
-Este erro ocorre quando o e-mail enviado para encontrar o `aluno` a ser atualizado, não corresponde a nenhum `aluno` cadastrado. Verifique se o e-mail está correto e tente novamente.
-
-- `'E-mail already exists'`
-
-Este erro ocorre quando o novo e-mail do `aluno` a ser atualizado, já corresponde ao e-mail de outro `aluno` já cadastrado. Utilize outro e-mail para atualizar.
-
-#### Update de Usuários
-
-- `"Validation failed"`
-
-Este erro ocorre quando o corpo da requisição contém algum erro, verifique se todos os campos nessessários estão presentes e se estão preenchidos corretamente.
-
-- `'E-mail already exists'`
-
-Este erro ocorre quando o novo e-mail do `usuário` a ser atualizado, já corresponde ao e-mail de outro `usuário` já cadastrado. Utilize outro e-mail para atualizar.
-
-## Contributing
-
-## Built With
+# Built With
 
 - [NodeJS](https://nodejs.org/en/) - Server
 - [bcryptjs](https://www.npmjs.com/package/bcryptjs) - Hash generator
@@ -265,7 +148,8 @@ Este erro ocorre quando o novo e-mail do `usuário` a ser atualizado, já corres
 - [nodemailer-express-handlebars](https://github.com/yads/nodemailer-express-handlebars) - Plugin for Nodemailer
 - [pg](https://github.com/brianc/node-postgres) - PostgreSQL client for Node.js
 - [pg-hstore](https://github.com/scarney81/pg-hstore) - Serializing and deserializing JSON data to hstore format
+- [@sentry/node](https://github.com/getsentry/sentry-javascript/tree/master/packages/node) - Application monitoring platform that helps you identify issues in real-time.
 
-## License
+# License
 
-Este projeto é licencisado sob a licença MIT.
+This project is licensed under the MIT license.
