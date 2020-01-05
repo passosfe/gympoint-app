@@ -7,12 +7,12 @@
 </h3>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/passosfe/Gympoint?color=%2304D361">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/passosfe/gympoint-app?color=%2304D361">
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
 
-  <a href="https://github.com/passosfe/Gympoint/stargazers">
-    <img alt="Stargazers" src="https://img.shields.io/github/stars/passosfe/Gympoint?style=social">
+  <a href="https://github.com/passosfe/gympoint-app/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/passosfe/gympoint-app?style=social">
   </a>
 </p>
 
